@@ -1,12 +1,12 @@
-import mongoose from "mongoose";
+import mongoose from 'mongoose';
 
-let isConnected = false;
+let isConnected = false;    // 연결 추적
 
 export const connectToDB = async () => {
     mongoose.set('strictQuery', true);
 
-    if (isConneted) {
-        console.log('MongDB is already connected')
+    if (isConnected) {
+        console.log('MongoDB is already connected')
         return;
     }
 
@@ -16,6 +16,7 @@ export const connectToDB = async () => {
             useNewUrlParser: true,
             useUnifiedTopology: true,
         })
+        console.log('MONGODB_URI:', process.env.MONGODB_URI);
 
         isConnected = true;
 
